@@ -9,7 +9,7 @@ input {
 body {
     margin: 0;
     padding: 0;
-    background: var(--snow);
+    background: var(--mustard);
 }
 
 .home-page {
@@ -20,7 +20,7 @@ body {
 .nav-bar {
     width: 100%;
     height: 80px;
-    background: var(--snow);
+    background: var(--mustard);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -39,12 +39,16 @@ body {
     padding-left: 50px;
 }
 
+svg {
+    color: var(--white-smoke);
+}
 .search-bar {
     width: 50%;
     height: 50%;
+    /* border: solid 3px var(--raisin-black); */
     border-style: none;
     border-radius: 5px;
-    background: rgb(232, 232, 232);
+    background: var(--deer);
     padding-left: 20px;
     margin-left: 20px;
     font-size: 16px;
@@ -80,7 +84,7 @@ body {
 
 
 .banner {
-    width: 98%;
+    width: 100%;
     height: 300px;
     background: url('/resources/flowers.jpg');
     background-position: center;
@@ -89,7 +93,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--snow);
+    color: var(--white-smoke);
     font-family: 'Playfair Display', serif;
     font-size: 30px;
 
@@ -100,6 +104,7 @@ body {
     padding: 10px 2% 10px 2%;
     color: var(--raisin-black);
     font-family: 'Open Sans', sans-serif;
+    background: var(--white-smoke);
 }
 
 .home-heading h1 {
@@ -113,6 +118,7 @@ body {
     color: var(--raisin-black);
     font-family: 'Open Sans', sans-serif;
     justify-content: space-evenly;
+    background: var(--white-smoke);
 }
 
 .product-card {
@@ -125,7 +131,7 @@ body {
 }
 
 .card-label {
-    background: var(--snow);
+    background: var(--white-smoke);
     transform: translateY(120px);
     padding: 5px 30px 5px 30px;
     border-radius: 2px;
@@ -160,9 +166,9 @@ footer {
     color: rgb(194, 194, 194);
 }
 :root {
-    --raisin-black: #212121;
-    --kombu-green: #304733;
-    --gray-asparagus: #4E5340;
-    --orange-yellow: #FED766;
-    --snow: #FCFAFA;
+    --raisin-black: #221D23;
+    --chocolate: #7D4600;
+    --deer: rgb(225, 189, 139);
+    --mustard: #FFC857;
+    --white-smoke: #F3F8F2;
 }
