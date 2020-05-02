@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:new, :destroy, :update]
 
     def index
         @listings = Listing.all
