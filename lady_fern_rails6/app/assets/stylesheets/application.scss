@@ -14,10 +14,13 @@
  *= require_self
  */
  @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
-
  
  ::-webkit-scrollbar {
     display: none;
+  }
+
+  html {
+      min-height: 100vh;
   }
 
  .hover\:grow {
@@ -109,4 +112,10 @@
     background: url(asset_path("custom.png"));
     background-position: center;
     background-size: cover;
+}
+
+.sign-in-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
