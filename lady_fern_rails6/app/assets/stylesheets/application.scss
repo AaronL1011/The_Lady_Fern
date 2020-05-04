@@ -1,0 +1,112 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+ 
+ ::-webkit-scrollbar {
+    display: none;
+  }
+
+ .hover\:grow {
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
+.hover\:grow:hover {
+    transform: scale(1.02);
+}
+
+#menu-toggle:checked + #menu {
+    display: block;
+}
+
+.smooth-transition {
+    transition: 0.3s ease;
+}
+
+.carousel {
+    background: #FFF;
+  }
+  
+.carousel-cell {
+    width: 90%;
+    height: 320px;
+    margin-right: 10px;
+    background: #EEE;
+    border-radius: 5px;
+    counter-increment: carousel-cell;
+}
+
+/* no circle */
+.flickity-button {
+    background: transparent;
+}
+
+.flickity-prev-next-button:hover {
+    background: transparent;
+}
+
+/* icon color */
+.flickity-button-icon {
+    fill: white;
+}
+/* hide disabled button */
+.flickity-button:disabled {
+    display: none;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.carousel-cell-label {
+    font-size: x-large;
+    background: #FAFAF9;
+    border-radius: 0px;
+    border: solid 2px black;
+    padding: 5px 30px 5px 30px;
+    font-family: 'Lora', serif;
+    box-shadow: 0px 0px 0px 2px white;
+}
+
+// hard-coded styles for carousel backgrounds
+.bg1 {
+    background: url(asset_path("large.png"));
+    background-position: center;
+    background-size: cover;
+}
+
+.bg2 {
+    background: url(asset_path("wreath2.png"));
+    background-position: center;
+    background-size: cover;
+}
+
+.bg3 {
+    background: url(asset_path("everlasting.png"));
+    background-position: center;
+    background-size: cover;
+}
+
+.bg4 {
+    background: url(asset_path("custom.png"));
+    background-position: center;
+    background-size: cover;
+}
