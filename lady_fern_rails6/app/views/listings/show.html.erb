@@ -1,1 +1,20 @@
-<h3><%= @listing.title %></h3>
+<div class="container mx-auto flex items-center justify-center flex-wrap pt-4 pb-12">
+    <div class="flex mt-10 w-4/5 flex-wrap">
+        <div class="lg:w-1/2">
+            <%= image_tag("medium.png", class: "w-full rounded-sm") %>
+        </div>
+        <div class="lg:w-1/2 h-full px-8 py-3">
+            <h1 class="mb-5 text-2xl">Pre-made <%= @listing.title %></h1>
+            <select class="block-inline appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 mb-6 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+            </select><br>
+        $<%= @listing.price%>0
+            <button type="submit" class="bg-white ml-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Buy Now</button>
+            <button type="submit" class="bg-white ml-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Add To Cart</button>
+            <p class="mt-10"><%= @listing.description%></p>
+        </div>
+    </div>
+</div>
+<%= render "shared/footer_listings.html.erb" %>  

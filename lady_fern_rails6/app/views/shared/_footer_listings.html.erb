@@ -1,0 +1,17 @@
+<div class="w-full my-2 text-center">
+    <h2 class="text-xl">You might also enjoy:</h2>
+</div>
+<div class="container mx-auto flex items-center justify-center flex-wrap pt-4 pb-12">
+    <% for listing in @randomItems %>
+        <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
+            <%= link_to listing_path(listing.id) do %>
+                <%= image_tag("medium.png", class: "hover:grow hover:shadow-lg rounded-sm") %>
+                <%# <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=400&amp;h=400&amp;q=80"> %>
+                <div class="pt-3 flex items-center justify-between">
+                    <p class=""><%= listing.size%> <%= listing.title%></p>
+                </div>
+                <p class="pt-1 text-gray-900">$<%= listing.price%></p>
+            <% end %>
+        </div>
+    <% end %>
+</div>

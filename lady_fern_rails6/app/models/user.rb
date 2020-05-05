@@ -7,4 +7,5 @@ class User < ApplicationRecord
     has_many :listings
     has_many :favourites
     has_many :carts
+    enum admin: {admin: 1, notadmin: 0}
 end

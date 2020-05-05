@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
     end
 
     def show
+        @randomItems = get_random_listings
     end
 
     def new
@@ -37,12 +38,12 @@ class ListingsController < ApplicationController
         @listing = Listing.find(params[:id])
     end
 
-    def set_user_listing
-        @listing = current_user.listings.find_by_id(params[:id])
-
-        if @listing == nil
-            redirect_to listings_path
+    def get_random_listings
+        listingsArray = []
+        for i in 0..2
+            listingsArray.push(Listing.all.sample)
         end
+        return listingsArray
     end
 
     def listing_params
