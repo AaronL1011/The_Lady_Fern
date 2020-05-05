@@ -40,8 +40,13 @@ class ListingsController < ApplicationController
 
     def get_random_listings
         listingsArray = []
-        for i in 0..2
-            listingsArray.push(Listing.all.sample)
+        i = 0
+        while i <= 2
+            listing = Listing.all.sample
+            if !listingsArray.include?(listing)
+                listingsArray.push(listing)
+                i += 1
+            end
         end
         return listingsArray
     end
