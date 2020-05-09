@@ -80,13 +80,16 @@
 }
 
 .carousel-cell-label {
+    width: max-content;
     font-size: x-large;
+    text-align: center;
     background: #FAFAF9;
     border-radius: 0px;
     border: solid 2px black;
     padding: 5px 30px 5px 30px;
     font-family: 'Lora', serif;
     box-shadow: 0px 0px 0px 2px white;
+
 }
 
 // hard-coded styles for carousel backgrounds
