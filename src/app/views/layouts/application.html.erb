@@ -47,21 +47,20 @@
       </nav>
       <div class="dropdown inline-block relative">
       <% if signed_in? %>
-        <%= link_to( edit_user_registration_path, class: "lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor") do %>
+        <%= link_to( profile_path, class: "lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor") do %>
           <img class="rounded-full w-10 h-10 border-2 border-transparent hover:border-orange-700" src="https://pbs.twimg.com/profile_images/1251656865261301760/edc5j8gM_400x400.jpg" alt="Andy Leverenz">
         <% end %>
       <% else %>
         <%= link_to( new_user_session_path, class: "lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor") do %>
-          <img class="rounded-full w-10 h-10 border-2 border-transparent hover:border-orange-700" src="https://pbs.twimg.com/profile_images/1251656865261301760/edc5j8gM_400x400.jpg" alt="Andy Leverenz">
-        <% end %>
+          <%= image_tag  "https://i.stack.imgur.com/34AD2.jpg", class:"rounded-full w-10 h-10 border-2 border-transparent hover:border-orange-700"%>        <% end %>
       <% end %>
     </div>
 
     </header>
   </div>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="notice bg-teal-100 text-center text-teal-900"><%= notice %></p>
+    <p class="alert bg-red-100 text-center text-red-900"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

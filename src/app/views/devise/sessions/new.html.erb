@@ -1,5 +1,5 @@
 <div class="sign-in-container h-full pt-20">
-  <div class='w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+  <div class='w-full max-w-sm lg:bg-white lg:shadow-lg rounded px-8 pt-6 pb-8 mb-4'>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="mb-4">
         <%= f.label :email, class:"block text-gray-700 text-sm font-bold" %><br />
@@ -26,6 +26,4 @@
       <%= render "devise/shared/links" %>    
     </div>
   </div>
-</div>
-<div class="fixed bottom-0 h-32 w-full bg-gray-500">
 </div>
