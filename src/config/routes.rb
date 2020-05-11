@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   devise_for :users
+  get "/pages/profile", to: "pages#profile", as: "profile"
   root 'listings#index'
   
+  #miscellanious routes
+  get "/pages/contact", to: "pages#contact", as: "contact"
+  get "/pages/search", to: "pages#search", as: "search"
+
   #creating new listings
   post "/listings", to: "listings#create"
   get "/listings/new", to: "listings#new", as: "new_listing"
 
   #retrieving single listings
   get "/listings/:id", to: "listings#show", as: "listing"
-
   #deleting listings
   delete "/listings/:id", to: "listings#destroy"
 

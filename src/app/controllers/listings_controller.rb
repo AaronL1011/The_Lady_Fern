@@ -5,7 +5,6 @@ class ListingsController < ApplicationController
 
     def index
         @listings = Listing.all
-        @size = Size.all
     end
 
     def show
@@ -25,7 +24,21 @@ class ListingsController < ApplicationController
         end
     end
 
+    def edit
+
+    end
+
+    def search
+    end
+    
     def update
+        @listing = Listing.update(params["id"], listing_params)
+        if @listing.errors.any?
+            set_breeds_and_sexes
+            render "edit"
+        else 
+            redirect_to @listing
+        end
     end
 
     def destroy
