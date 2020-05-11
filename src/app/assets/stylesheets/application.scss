@@ -19,9 +19,13 @@
     display: none;
   }
 
-  html {
-      min-height: 100vh;
-  }
+html {
+    min-height: 100vh;
+}
+
+body {
+    background: #FFFFF7;
+}
 
  .hover\:grow {
     transition: all 0.3s;
