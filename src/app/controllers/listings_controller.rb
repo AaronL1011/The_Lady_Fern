@@ -8,6 +8,7 @@ class ListingsController < ApplicationController
     end
 
     def show
+        @listing = Listing.find(params[:id])
         @randomItems = get_random_listings
     end
 
