@@ -1,5 +1,5 @@
-<h1 class="text-4xl py-6 text-center">Your Cart</h1>
-<div class="flex w-full justify-center mx-10">
+<h1 class="text-center py-10 text-3xl text-orange-900">Your Cart</h1>
+<div class="flex w-full justify-center mx-10 pb-10">
     <table class="table-auto text-center">
         <thead>
             <tr>
@@ -29,7 +29,14 @@
                     <td class="px-4 py-2"><%= item.qty %></td>
                     <td class="px-4 py-2">$<%= item.listing.price %>0</td>
                     <td class="px-4 py-2">$<%= item.listing.price * item.qty %>0</td>
-                    <td class="px-4 py-2">x</td>
+                    <td class="px-4 py-2">
+                        <%= form_tag(remove_from_cart_path(item.id), method: "delete", class:"inline") do %>
+                            <div class="comment-controls inline">
+                                <%= submit_tag "x", class: "underline cursor-pointer bg-transparent no-underline" %>
+                                <%# <%= link_to "edit", edit_repo_comment_path(comment.id), class: "icon" %>
+                            </div>
+                        <% end %>
+                    </td>
                 </tr>
             <% end %>
             <tr>
@@ -38,12 +45,12 @@
             </tr>
             <tr>
                 <td colspan="3"></td>
-                <td class="px-4 py-4">
+                <td class="px-4 pt-8">
                     <%= form_tag( root_path, class:"inline" ) do %>
                             <%= submit_tag "Update", class: "bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
                     <% end %>
                 </td>
-                <td colspan="2" class="px-4 py-4">
+                <td colspan="2" class="px-4 pt-8">
                     <%= form_tag( root_path, class:"inline" ) do %>
                             <%= submit_tag "Checkout", class: "bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
                     <% end %>

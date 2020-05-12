@@ -7,7 +7,7 @@ class CartsController < ApplicationController
     end
 
     def add
-        get_user
+        get_user_and_cart
         get_listing
         if @user.carts.distinct.pluck(:listing_id).include?(@listing.id)
             cart_listing = @user.carts.find_by_listing_id(@listing.id)
