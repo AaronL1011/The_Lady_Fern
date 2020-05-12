@@ -32,7 +32,12 @@
             <p>$<%= @listing.price%>0</p>
             <div class="inline"><br>
                 <button type="submit" class="bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Buy Now</button>
-                <button type="submit" class="bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Add To Cart</button>            
+
+                <%= form_tag( add_to_cart_path(:id => @listing.id), class:"inline" ) do %>
+                        <%= submit_tag "Add To Cart", class: "bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+                <% end %>
+
+
             </div>
             <p class="mt-10"><%= @listing.description%></p>
         </div>

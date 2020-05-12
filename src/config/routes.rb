@@ -3,20 +3,25 @@ Rails.application.routes.draw do
   get "/pages/profile", to: "pages#profile", as: "profile"
   root 'listings#index'
   
-  #miscellanious routes
+  # miscellanious routes
   get "/pages/contact", to: "pages#contact", as: "contact"
   get "/pages/search", to: "pages#search", as: "search"
 
-  #creating new listings
+  # cart routes
+  get "/cart", to: "carts#show", as: "cart"
+  post "/cart", to: "carts#add", as: "add_to_cart"
+  delete "/cart/:id", to: "carts#remove", as: "remove_from_cart"
+
+  # creating new listings
   post "/listings", to: "listings#create"
   get "/listings/new", to: "listings#new", as: "new_listing"
 
-  #retrieving single listings
+  # retrieving single listings
   get "/listings/:id", to: "listings#show", as: "listing"
-  #deleting listings
+  # deleting listings
   delete "/listings/:id", to: "listings#destroy"
 
-  #editing listings
+  # editing listings
   get "/listings/:id/edit", to: "listings#edit", as: "edit_listing"
   put "/listings/:id", to: "listings#update"
   patch "/listings/:id", to: "listings#update"
