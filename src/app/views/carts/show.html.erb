@@ -1,61 +1,78 @@
-<h1 class="text-center py-10 text-3xl text-orange-900">Your Cart</h1>
-<div class="flex w-full justify-center mx-10 pb-10">
-    <table class="table-auto text-center">
-        <thead>
-            <tr>
-                <th class="px-4 py-2">&nbsp;</th>
-                <th class="px-4 py-2">Item</th>
-                <th class="px-4 py-2">Qty</th>
-                <th class="px-4 py-2">Price</th>
-                <th class="px-4 py-2">Total</th>
-                <th class="px-4 py-2">&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for item in @cart %>
+
+<% if @user.carts.length > 0 %>
+    <h1 class="text-center py-10 text-3xl text-orange-900">Your Cart</h1>
+    <div class="flex w-full justify-center mx-10 pb-10">
+        <table class="table-auto text-center">
+            <thead>
                 <tr>
-                    <td class="py-6">
-                        <% if item.listing.picture.attached? %>
-                            <%= image_tag(item.listing.picture, class: "hover:grow hover:shadow-lg rounded-sm w-12 lg:w-16") %>
-                        <% else %>
-                            <%= image_tag("medium.png", class: "hover:grow hover:shadow-lg rounded-sm w-12 lg:w-16") %>
+                    <th class="px-10 py-2">&nbsp;</th>
+                    <th class="pr-32 py-2">Item</th>
+                    <th class="px-10 py-2">Qty</th>
+                    <th class="px-10 py-2">Price</th>
+                    <th class="px-10 py-2">Total</th>
+                    <th class="px-10 py-2">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for item in @cart %>
+                    <tr class="border-b">
+                        <td class="py-6">
+                            <% if item.listing.picture.attached? %>
+                                <%= image_tag(item.listing.picture, class: "hover:grow hover:shadow-lg rounded-sm w-12 lg:w-16") %>
+                            <% else %>
+                                <%= image_tag("medium.png", class: "hover:grow hover:shadow-lg rounded-sm w-12 lg:w-16") %>
+                            <% end %>
+                        </td>
+                        <td class="pr-32 py-2">
+                            <%= link_to listing_path(item.listing) do %>
+                                <%= item.listing.size %> <%= item.listing.title %>
+                            <% end %>
+                        </td>
+                        <td class="px-4 py-2">
+                            <%= form_with(model: @cart, url: update_cart_path(item.id), method: "put", ) do |form| %>
+                                <%= form.number_field :new_quantity, :value => item.qty, class: "border w-10 text-center" %>
+                            <% end %>
+                        </td>
+                        <td class="px-4 py-2">$<%= item.listing.price %>0</td>
+                        <td class="px-4 py-2">$<%= item.listing.price * item.qty %>0</td>
+                        <td class="px-4 py-2">
+                            <%= form_tag(remove_from_cart_path(item.id), method: "delete", class:"inline") do %>
+                                <div class="comment-controls inline">
+                                    <%= submit_tag "✕", class: "underline cursor-pointer bg-transparent no-underline text-orange-900" %>
+                                    <%# <%= link_to "edit", edit_repo_comment_path(comment.id), class: "icon" %>
+                                </div>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+                <tr>
+                    <td colspan="3"></td>
+                    <td class="px-4 pt-12 pb-4"><strong>Subtotal:</strong></td>
+                    <td class="px-4 pt-12 pb-4">$<%= @total_price %>0</td>
+                </tr>
+                <tr>
+                    <td colspan="3"></td>
+                    <td class="px-4 pt-8">
+                        <%= form_tag( root_path, class:"inline" ) do %>
+                                <%= submit_tag "Update", class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
                         <% end %>
                     </td>
-                    <td class="px-4 py-2">
-                        <%= link_to listing_path(item.listing) do %>
-                            <%= item.listing.size %> <%= item.listing.title %>
-                        <% end %>
-                    </td>
-                    <td class="px-4 py-2"><%= item.qty %></td>
-                    <td class="px-4 py-2">$<%= item.listing.price %>0</td>
-                    <td class="px-4 py-2">$<%= item.listing.price * item.qty %>0</td>
-                    <td class="px-4 py-2">
-                        <%= form_tag(remove_from_cart_path(item.id), method: "delete", class:"inline") do %>
-                            <div class="comment-controls inline">
-                                <%= submit_tag "x", class: "underline cursor-pointer bg-transparent no-underline" %>
-                                <%# <%= link_to "edit", edit_repo_comment_path(comment.id), class: "icon" %>
-                            </div>
+                    <td colspan="2" class="px-4 pt-8">
+                        <%= form_tag( root_path, class:"inline" ) do %>
+                                <%= submit_tag "Checkout", class: "bg-white mr-8 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-8 border border-gray-400 rounded shadow" %>
                         <% end %>
                     </td>
                 </tr>
-            <% end %>
-            <tr>
-                <td colspan="4"></td>
-                <td class="px-4 py-2">$<%= @total_price %>0</td>
-            </tr>
-            <tr>
-                <td colspan="3"></td>
-                <td class="px-4 pt-8">
-                    <%= form_tag( root_path, class:"inline" ) do %>
-                            <%= submit_tag "Update", class: "bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
-                    <% end %>
-                </td>
-                <td colspan="2" class="px-4 pt-8">
-                    <%= form_tag( root_path, class:"inline" ) do %>
-                            <%= submit_tag "Checkout", class: "bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
-                    <% end %>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>
+<% else %>
+    <p class=" mt-48 text-center px-4">Theres nothing in your cart yet, go buy some stuff!</p>
+    <div class="flex w-full justify-center">
+        <%= link_to root_path do %>
+            <div class="inline-block mt-10 px-6 py-4 border border-orange-900">
+                <p class="font-bold text-orange-900">Continue Shopping</p>
+            </div>
+        <% end %>
+    </div>
+<% end %>
