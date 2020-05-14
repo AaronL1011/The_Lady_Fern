@@ -27,6 +27,7 @@ class CartsController < ApplicationController
     def update
         new_quantity = params[:new_quantity]
         cart_listing = Cart.find(params[:id])
+        
     end
 
     def destroy
