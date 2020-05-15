@@ -78,7 +78,7 @@ class ListingsController < ApplicationController
             end
             return listingsArray
         else
-            return get_faux_listings
+            return nil
         end
     end
 
