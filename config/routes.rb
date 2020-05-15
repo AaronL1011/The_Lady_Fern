@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   get "/pages/profile", to: "pages#profile", as: "profile"
   root 'listings#index'
-  
+
+  # admin listings view
+  get "/listings/all", to: "listings#all", as: "admin_listing"
+
   # miscellanious routes
   get "/pages/contact", to: "pages#contact", as: "contact"
   get "/pages/search", to: "pages#search", as: "search"
@@ -19,8 +22,12 @@ Rails.application.routes.draw do
 
   # retrieving single listings
   get "/listings/:id", to: "listings#show", as: "listing"
+  
   # deleting listings
   delete "/listings/:id", to: "listings#destroy"
+
+
+
 
   # editing listings
   get "/listings/:id/edit", to: "listings#edit", as: "edit_listing"
