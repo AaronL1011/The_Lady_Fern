@@ -1,11 +1,12 @@
 class CartsController < ApplicationController
     before_action :authenticate_user!
     
-    def show
+    def show 
         get_user_and_cart
         get_total_price
     end
 
+    # Check if current users cart includes specified listing to add, if so, increase quantity by 1, otherwise add new listing to cart.
     def add
         get_user_and_cart
         get_listing
@@ -24,6 +25,7 @@ class CartsController < ApplicationController
         redirect_to cart_path
     end
 
+    # Logic for updating cart listing quantities from cart view.
     def update
         new_quantity = params[:new_quantity]
         cart_listing = Cart.find(params[:id])
