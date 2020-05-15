@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LadyFernRails6</title>
+    <title>Lady Fern</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "https://unpkg.com/flickity@2/dist/flickity.min.css" %>
-    <%= javascript_include_tag "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" %>
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Amiri&family=Montserrat&display=swap" %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-
   </head>
   
   <%= link_to root_path do %>
@@ -64,7 +62,9 @@
   <body>
     <p class="notice bg-teal-100 text-center text-teal-900"><%= notice %></p>
     <p class="alert bg-red-100 text-center text-red-900"><%= alert %></p>
+    <%= javascript_include_tag "https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js" %>
     <%= yield %>
+    
   </body>
 
 </html>
