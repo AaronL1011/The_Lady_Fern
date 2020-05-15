@@ -19,6 +19,7 @@ user.email = "admin@email.com"
 user.name = "Sophia97"
 user.phone_number = "0410101110"
 user.shipping_address = "60 Test Ave, Rhode Island"
+user.password = "password"
 user.encrypted_password = "$2a$11$E8NwtuglMQSvVYi.Ar/jvuWu.MBZ0XcEzjumKnWEmbliTlamXzAXG"
 user.admin = 1
 user.save!
