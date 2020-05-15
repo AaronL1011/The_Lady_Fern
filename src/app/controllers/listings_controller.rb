@@ -35,7 +35,7 @@ class ListingsController < ApplicationController
     def update
         @listing = Listing.update(params["id"], listing_params)
         if @listing.errors.any?
-            set_breeds_and_sexes
+            set_listing
             render "edit"
         else 
             redirect_to @listing
@@ -53,13 +53,14 @@ class ListingsController < ApplicationController
         @listing = Listing.find(params[:id])
     end
 
+    # 3 random listings for recommending to users
     def get_random_listings
         listingsArray = []
         i = 0
         while i <= 2
-            listing = Listing.all.sample
-            if !listingsArray.include?(listing)
-                listingsArray.push(listing)
+            random_listing = Listing.all.sample
+            if !listingsArray.include?(random_listing) && random_listing != @listing
+                listingsArray.push(random_listing)
                 i += 1
             end
         end
