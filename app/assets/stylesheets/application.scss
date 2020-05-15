@@ -15,9 +15,9 @@
  */
  @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
  
- ::-webkit-scrollbar {
+::-webkit-scrollbar {
     display: none;
-  }
+}
 
 html {
     min-height: 100vh;
@@ -46,7 +46,7 @@ body {
 
 .carousel {
     background: #FFF;
-  }
+}
   
 .carousel-cell {
     width: 90%;
@@ -87,9 +87,7 @@ body {
 .flex-center {
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    
+    justify-content: center; 
 }
 
 .carousel-cell-label {
@@ -102,7 +100,6 @@ body {
     padding: 5px 30px 5px 30px;
     font-family: 'Lora', serif;
     box-shadow: 0px 0px 0px 2px white;
-
 }
 
 // hard-coded styles for carousel backgrounds
@@ -138,7 +135,7 @@ body {
 
 .dropdown:hover .dropdown-menu {
     display: block;
-  }
+}
 
 .logo-title {
     font-family: 'Amiri', serif;
