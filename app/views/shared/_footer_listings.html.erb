@@ -6,8 +6,11 @@
         <% for listing in @randomItems %>
             <div class="w-4/5 md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                 <%= link_to listing_path(listing.id) do %>
-                    <%= image_tag("medium.png", class: "hover:grow hover:shadow-lg rounded-sm") %>
-                    <%# <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=400&amp;h=400&amp;q=80"> %>
+                    <% if listing.picture.attached? %>
+                        <%= image_tag(listing.picture, class: "hover:grow hover:shadow-lg rounded-sm") %>
+                    <% else %>
+                        <%= image_tag("medium.png", class: "hover:grow hover:shadow-lg rounded-sm") %>
+                    <% end %>
                     <div class="pt-3 flex items-center justify-between">
                         <p class=""><%= listing.size%> <%= listing.title%></p>
                     </div>
