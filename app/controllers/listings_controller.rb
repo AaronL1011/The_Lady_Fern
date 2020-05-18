@@ -11,27 +11,29 @@ class ListingsController < ApplicationController
         @listing = Listing.find(params[:id])
         @randomItems = get_random_listings
 
-        session = Stripe::Checkout::Session.create(
-            payment_method_types: ['card'],
-            customer_email: current_user.email,
-            line_items: [{
-                name: "#{@listing.size} #{@listing.title}",
-                description: @listing.description,
-                amount: @listing.price.to_i * 100,
-                currency: 'aud',
-                quantity: 1,
-            }],
-            payment_intent_data: {
-                metadata: {
-                    user_id: current_user.id,
-                    listing_id: @listing.id
-                }
-            },
-            success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@listing.id}",
-            cancel_url: "#{root_url}listings/#{@listing.id}"
-        )
-    
-        @session_id = session.id
+        if signed_in?
+            session = Stripe::Checkout::Session.create(
+                payment_method_types: ['card'],
+                customer_email: current_user.email,
+                line_items: [{
+                    name: "#{@listing.size} #{@listing.title}",
+                    description: @listing.description,
+                    amount: @listing.price.to_i * 100,
+                    currency: 'aud',
+                    quantity: 1,
+                }],
+                payment_intent_data: {
+                    metadata: {
+                        user_id: current_user.id,
+                        listing_id: @listing.id
+                    }
+                },
+                success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{@listing.id}",
+                cancel_url: "#{root_url}listings/#{@listing.id}"
+            )
+        
+            @session_id = session.id
+        end
     end
 
     def all

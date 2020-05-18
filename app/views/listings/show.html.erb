@@ -7,10 +7,9 @@
     <%= render "item_show" %>
   <% end %>
 </div>
-
-<%= render "shared/footer_listings.html.erb" %>  
-<script src="https://js.stripe.com/v3/"></script>
-<script>
+<% if signed_in? %>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
   document
     .querySelector("[data-stripe='payment']")
     .addEventListener("click", () => {
@@ -22,4 +21,6 @@
         sessionId: "<%= @session_id %>"
       });
     });
-</script>
+  </script> 
+<% end %>
+<%= render "shared/footer_listings.html.erb" %>  
