@@ -20,11 +20,13 @@ Rails.application.routes.draw do
   post "/listings", to: "listings#create"
   get "/listings/new", to: "listings#new", as: "new_listing"
 
+    # deleting listings
+    delete "/listings/:id", to: "listings#destroy"
+    
   # retrieving single listings
   get "/listings/:id", to: "listings#show", as: "listing"
   
-  # deleting listings
-  delete "/listings/:id", to: "listings#destroy"
+
 
 
 

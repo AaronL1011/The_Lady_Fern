@@ -15,6 +15,9 @@ class ListingsController < ApplicationController
     def all
         if current_user.admin
             @listings = Listing.all
+            @users = User.all
+        else
+            @listings = current_user.listings.all
         end
     end
 

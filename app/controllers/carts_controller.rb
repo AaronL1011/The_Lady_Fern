@@ -4,6 +4,7 @@ class CartsController < ApplicationController
     def show 
         get_user_and_cart
         get_total_price
+        @randomItems = get_random_listings
     end
 
     # Check if current users cart includes specified listing to add, if so, increase quantity by 1, otherwise add new listing to cart.
@@ -51,6 +52,25 @@ class CartsController < ApplicationController
         @total_price = 0
         for item in @cart
             @total_price += item.listing.price * item.qty
+        end
+    end
+    
+    # 3 random listings for recommending to users
+    def get_random_listings
+        listingsArray = []
+        i = 0
+        listing_count = Listing.where("in_stock": true).count
+        if listing_count >= 4
+            while i <= 2
+                random_listing = Listing.all.sample
+                if !listingsArray.include?(random_listing) && random_listing != @listing && random_listing.in_stock
+                    listingsArray.push(random_listing)
+                    i += 1
+                end
+            end
+            return listingsArray
+        else
+            return nil
         end
     end
 end

@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
   </head>
   
@@ -39,8 +40,12 @@
       <div class="hidden lg:flex lg:items-center lg:w-auto w-full" id="menu">
         <nav>
           <ul class="lg:flex items-center justify-between text-base text-gray-700 pt-4 lg:pt-0">
-            <% if signed_in? and current_user.admin %>
-              <li><%= link_to  "See All Listings", admin_listing_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent text-orange-700 hover:border-orange-700" %></li>
+            <% if signed_in? %>
+              <% if current_user.admin %>
+                <li><%= link_to  "Admin Dashboard", admin_listing_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent text-orange-700 hover:border-orange-700" %></li>
+              <% else %>
+                <li><%= link_to  "My Listings", admin_listing_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent text-orange-700 hover:border-orange-700" %></li>
+              <% end %>
               <li><%= link_to  "New Listing", new_listing_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent text-green-700 hover:border-green-700" %></li>
             <% end %>
             <li><%= link_to  "Cart", cart_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange-700" %></li>

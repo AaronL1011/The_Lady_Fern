@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :picture
   has_many :purchases
-  has_many :listings
+  has_many :listings, dependent: :destroy
   has_many :favourites
   has_many :carts
   enum admin: {admin: 1, notadmin: 0}

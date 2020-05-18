@@ -1,0 +1,39 @@
+<div class="flex mt-10 w-4/5 flex-wrap">
+      <div class="lg:w-1/2 px-0 md:px-6">
+        <% if @listing.picture.attached? %>
+          <%= image_tag(@listing.picture, class: "w-full rounded-sm") %>
+        <% else %>
+          <%= image_tag("medium.png", class: "w-full rounded-sm") %>
+        <% end %>
+      </div>
+      <div class="lg:w-1/2 h-full px-1 py-3">
+        <div><h1 class="mb-5 text-2xl inline mr-1">Pre-made <%= @listing.title %></h1>
+          <% if signed_in? && current_user.admin %>
+            <%= form_tag(listing_path(@listing.id), method: "delete", class:"inline") do %>
+              <div class="comment-controls inline">
+                <%= submit_tag "delete", class: "underline cursor-pointer bg-transparent" %>
+              </div>
+            <% end %>
+            <%= link_to  "edit", edit_listing_path(@listing.id), class: "inline underline" %>
+          <% end %>
+        </div>
+        <div class="inline-block relative mt-4">
+          <select class="inline-block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+            <option>Small</option>
+            <option>Medium</option>
+            <option>Large</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div><br><br>
+        <p>$<%= @listing.price%>0</p>
+        <div class="inline"><br>
+          <button type="submit" class="bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Buy Now</button>
+          <%= form_tag( add_to_cart_path(:id => @listing.id), class:"inline" ) do %>
+            <%= submit_tag "Add To Cart", class: "bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+          <% end %>
+        </div>
+        <p class="mt-10"><%= @listing.description%></p>
+      </div>
+    </div>
