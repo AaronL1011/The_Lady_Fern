@@ -35,7 +35,7 @@
     </div>
 
     <div class="lg:flex lg:items-center mb-6">
-        <%= f.label :picture, class: "inline text-gray-700 text-sm font-bold" %>
+        <%= f.label :picture, class: "inline text-gray-700 text-sm font-bold mr-4" %>
         <%= f.file_field :picture, accept: "image/png,image/gif,image/jpeg,image/jpg", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 bg-white my-3 leading-tight focus:outline-none focus:shadow-outline" %>
     </div>
 
@@ -54,9 +54,9 @@
     </div>
   <% end %>
 </div>
-  <div class="flex justify-around my-4">
-    <%= button_to "Cancel my account", registration_path( resource_name ), data: { confirm: "Are you sure?" }, method: :delete %>
-    <%= link_to "Back", :back %>
-  </div>
+<div class="flex justify-center mt-4 mb-10">
+  <%= button_to "Cancel my account", registration_path( resource_name ), data: { confirm: "Are you sure?" }, method: :delete, class: "mr-5 underline" %>
+  <%= link_to "Back", :back, class: "mr-5 underline" %>
+</div>
 
 
