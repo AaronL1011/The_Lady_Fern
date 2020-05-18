@@ -30,9 +30,6 @@ Rails.application.routes.draw do
   # stripe payment routes
   get "/payments/success", to: "payments#success"
 
-
-
-
   # editing listings
   get "/listings/:id/edit", to: "listings#edit", as: "edit_listing"
   put "/listings/:id", to: "listings#update"
