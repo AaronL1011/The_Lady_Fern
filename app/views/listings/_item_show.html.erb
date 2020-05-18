@@ -9,11 +9,7 @@
       <div class="lg:w-1/2 h-full px-1 py-3">
         <div><h1 class="mb-5 text-2xl inline mr-1">Pre-made <%= @listing.title %></h1>
           <% if signed_in? && current_user.admin %>
-            <%= form_tag(listing_path(@listing.id), method: "delete", class:"inline") do %>
-              <div class="comment-controls inline">
-                <%= submit_tag "delete", class: "underline cursor-pointer bg-transparent" %>
-              </div>
-            <% end %>
+            <%= link_to  "delete", listing_path(@listing.id), class: "inline underline", :method => :delete %>
             <%= link_to  "edit", edit_listing_path(@listing.id), class: "inline underline" %>
           <% end %>
         </div>

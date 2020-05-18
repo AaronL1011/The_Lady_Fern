@@ -48,14 +48,26 @@
               <% end %>
               <li><%= link_to  "New Listing", new_listing_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent text-green-700 hover:border-green-700" %></li>
             <% end %>
-            <li><%= link_to  "Cart", cart_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange-700" %></li>
+            <li>
+            <%= link_to cart_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange-700" do %>
+              <p>Cart
+              <% if signed_in? and current_user.carts.count > 0 %>
+                <sup><%= current_user.carts.count %></sup>
+              <% end %>
+              </p>
+            <% end %>
+            </li>
             <li><%= link_to  "Contact", contact_path, class:"lg:p-4 py-3 px-0 block border-b-2 border-transparent hover:border-orange-700" %></li>
           </ul>
         </nav>
         <div class="dropdown inline-block relative">
         <% if signed_in? %>
           <%= link_to( profile_path, class: "lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor") do %>
-            <img class="rounded-full w-10 h-10 border-2 border-transparent hover:border-orange-700" src="https://pbs.twimg.com/profile_images/1251656865261301760/edc5j8gM_400x400.jpg" alt="Andy Leverenz">
+            <% if !current_user.picture.attached? %>
+              <%= image_tag  "https://i.stack.imgur.com/34AD2.jpg", class:"rounded-full w-10 h-10 border-2 border-transparent hover:border-orange-700"%>
+            <% else %>
+              <%= image_tag  current_user.picture, class:"rounded-full w-10 h-10 border-2 border-transparent hover:border-orange-700"%>
+            <% end %>
           <% end %>
         <% else %>
           <%= link_to( new_user_session_path, class: "lg:ml-4 flex items-center justify-start lg:mb-0 mb-4 pointer-cursor") do %>

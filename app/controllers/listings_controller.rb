@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
 
 
     def index
-        @listings = Listing.all
+        @listings = Listing.all.sort_by(&:created_at).reverse
     end
 
     def show
@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
 
     def all
         if current_user.admin
-            @listings = Listing.all
+            @listings = Listing.all.sort_by(&:created_at).reverse
             @users = User.all
         else
             @listings = current_user.listings.all

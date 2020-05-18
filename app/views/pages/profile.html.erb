@@ -1,3 +1,19 @@
-<h1>Profile View</h1>
+<h1 class="text-center py-10 text-3xl text-orange-900">Profile</h1>
+<div class="flex items-center flex-col">
+    <div class="flex justify-center mb-4">
+        <% if current_user.picture.attached? %>
+            <%= image_tag( current_user.picture, class: "rounded-sm w-56" ) %>
+        <% else %>
+            <%= image_tag( "https://i.stack.imgur.com/34AD2.jpg", class: "rounded-sm" ) %>
+        <% end %>
+    </div>
+    <p><strong>Username: </strong><%= current_user.name %></p>
+    <p><strong>Email: </strong><%= current_user.email %></p>
+    <p><strong>Phone Number: </strong><%= current_user.phone_number %></p>
+    <p><strong>Address: </strong><%= current_user.shipping_address %></p>
+    <div class="flex flex-col items-center mt-4">
+        <%= button_to "Edit Account", edit_user_registration_path, class:"bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold cursor-pointer py-2 px-4 rounded inline-flex text-center mb-5", :method => :get %>
+        <%= link_to "Log Out", destroy_user_session_path, class:"bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex text-center", :method => :delete %>
+    </div>
+</div>
 
-<%= link_to "Log Out", destroy_user_session_path, class:"bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center", :method => :delete %>

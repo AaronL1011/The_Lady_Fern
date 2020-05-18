@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     # Adding custom fields to devise User model
     
     def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :phone_number, :shipping_address)}
-        devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :phone_number, :shipping_address)}
+        devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :phone_number, :shipping_address, :picture)}
+        devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :phone_number, :shipping_address, :picture)}
     end
 end
