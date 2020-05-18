@@ -63,3 +63,5 @@ gem "aws-sdk-s3", "~> 1.64"
 
 gem "jquery-slick-rails"
 gem "jquery-rails", "~> 4.4"
+
+gem "stripe", "~> 5.22"

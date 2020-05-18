@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   post "/cart", to: "carts#add", as: "add_to_cart"
   delete "/cart/:id", to: "carts#remove", as: "remove_from_cart"
   put "/cart/:id", to: "carts#update", as: "update_cart"
+  get "/cart/checkout", to: "carts#checkout", as: "checkout"
 
   # creating new listings
   post "/listings", to: "listings#create"
@@ -26,7 +27,8 @@ Rails.application.routes.draw do
   # retrieving single listings
   get "/listings/:id", to: "listings#show", as: "listing"
   
-
+  # stripe payment routes
+  get "/payments/success", to: "payments#success"
 
 
 

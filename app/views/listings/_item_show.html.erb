@@ -23,9 +23,9 @@
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </div>
         </div><br><br>
-        <p>$<%= @listing.price%>0</p>
+        <p><%= number_to_currency(@listing.price)%></p>
         <div class="inline"><br>
-          <button type="submit" class="bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Buy Now</button>
+          <button data-stripe="payment" class="bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Buy Now</button>
           <%= form_tag( add_to_cart_path(:id => @listing.id), class:"inline" ) do %>
             <%= submit_tag "Add To Cart", class: "bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
           <% end %>

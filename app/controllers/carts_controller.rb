@@ -6,6 +6,28 @@ class CartsController < ApplicationController
         get_total_price
         @randomItems = get_random_listings
     end
+    
+    def checkout
+        get_user_and_cart
+        get_stripe_line_items
+        if @cart.count > 0
+            session = Stripe::Checkout::Session.create(
+                payment_method_types: ['card'],
+                customer_email: current_user.email,
+                line_items: @cart_array,
+                payment_intent_data: {
+                    metadata: {
+                        user_id: current_user.id,
+                        listing_id: current_user.carts.first.id
+                    }
+                },
+                success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{current_user.carts.first.id}",
+                cancel_url: "#{cart_url}"
+            )
+        
+            @session_id = session.id
+        end
+    end
 
     # Check if current users cart includes specified listing to add, if so, increase quantity by 1, otherwise add new listing to cart.
     def add
@@ -38,6 +60,13 @@ class CartsController < ApplicationController
     end
 
     private
+
+    def get_stripe_line_items
+        @cart_array = []
+        for item in @cart
+            @cart_array.push({name: "#{item.listing.size} #{item.listing.title}", description: item.listing.description, amount: item.listing.price.to_i * 100, currency: 'aud', quantity: item.qty })
+        end
+    end
 
     def get_user_and_cart
         @user = current_user

@@ -1,5 +1,4 @@
 <% if @user.carts.length > 0 %>
-
   <h1 class="text-center py-10 text-3xl text-orange-900">Your Cart</h1>
 
     <div class="flex w-full justify-center pb-10 px-4">
@@ -57,14 +56,11 @@
     <%= form_tag( root_path ) do %>
       <%= submit_tag "Update", class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
     <% end %>
-    <%= form_tag( root_path ) do %>
-      <%= submit_tag "Checkout", class: "bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-8 border border-gray-400 rounded shadow" %>
-    <% end %>
+    <%= link_to  "Checkout", checkout_path, class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
   </div>
-
 <% else %>
 
-  <p class=" mt-48 text-center px-4">Theres nothing in your cart yet, go buy some stuff!</p>
+  <p class=" mt-32 text-center px-4">Theres nothing in your cart yet, go buy some stuff!</p>
   <div class="flex w-full justify-center">
     <%= link_to root_path do %>
       <div class="inline-block my-10 px-6 py-4 border border-orange-900">
