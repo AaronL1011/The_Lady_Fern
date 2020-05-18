@@ -16,158 +16,158 @@
  @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
  
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 html {
-    min-height: 100vh;
+  min-height: 100vh;
 }
 
 body {
-    background: #FFFFF7;
+  background: #FFFFF7;
 }
 
- .hover\:grow {
-    transition: all 0.3s;
-    transform: scale(1);
+.hover\:grow {
+  transition: all 0.3s;
+  transform: scale(1);
 }
 
 .hover\:grow:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 #menu-toggle:checked + #menu {
-    display: block;
+  display: block;
 }
 
 .smooth-transition {
-    transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .carousel {
-    background: #FFF;
+  background: #FFF;
 }
   
 .carousel-cell {
-    width: 90%;
-    height: 320px;
-    margin-right: 10px;
-    background: #EEE;
-    border-radius: 5px;
-    counter-increment: carousel-cell;
+  width: 90%;
+  height: 320px;
+  margin-right: 10px;
+  background: #EEE;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
 }
 
 .carousel-cell-mobile {
-    width: 100%;
-    height: 320px;
-    margin-right: 10px;
-    background: #EEE;
-    border-radius: 0px;
-    counter-increment: carousel-cell;
+  width: 100%;
+  height: 320px;
+  margin-right: 10px;
+  background: #EEE;
+  border-radius: 0px;
+  counter-increment: carousel-cell;
 }
 
 /* no circle */
 .flickity-button {
-    background: transparent;
+  background: transparent;
 }
 
 .flickity-prev-next-button:hover {
-    background: transparent;
+  background: transparent;
 }
 
 /* icon color */
 .flickity-button-icon {
-    fill: white;
+  fill: white;
 }
 /* hide disabled button */
 .flickity-button:disabled {
-    display: none;
+  display: none;
 }
 
 .flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
 }
 
 .carousel-cell-label {
-    width: max-content;
-    font-size: x-large;
-    text-align: center;
-    background: #FAFAF9;
-    border-radius: 0px;
-    border: solid 2px black;
-    padding: 5px 30px 5px 30px;
-    font-family: 'Lora', serif;
-    box-shadow: 0px 0px 0px 2px white;
+  width: max-content;
+  font-size: x-large;
+  text-align: center;
+  background: #FAFAF9;
+  border-radius: 0px;
+  border: solid 2px black;
+  padding: 5px 30px 5px 30px;
+  font-family: 'Lora', serif;
+  box-shadow: 0px 0px 0px 2px white;
 }
 
 // hard-coded styles for carousel backgrounds
 .bg1 {
-    background: url(asset_path("large.png"));
-    background-position: center;
-    background-size: cover;
+  background: url(asset_path("large.png"));
+  background-position: center;
+  background-size: cover;
 }
 
 .bg2 {
-    background: url(asset_path("wreath2.png"));
-    background-position: center;
-    background-size: cover;
+  background: url(asset_path("wreath2.png"));
+  background-position: center;
+  background-size: cover;
 }
 
 .bg3 {
-    background: url(asset_path("everlasting.png"));
-    background-position: center;
-    background-size: cover;
+  background: url(asset_path("everlasting.png"));
+  background-position: center;
+  background-size: cover;
 }
 
 .bg4 {
-    background: url(asset_path("custom.png"));
-    background-position: center;
-    background-size: cover;
+  background: url(asset_path("custom.png"));
+  background-position: center;
+  background-size: cover;
 }
 
 .sign-in-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+  display: block;
 }
 
 .logo-title {
-    font-family: 'Amiri', serif;
+  font-family: 'Amiri', serif;
 }
 
 .logo-subtitle {
-    font-family: 'Montserrat', sans-serif;
-    font-size: small;
-    margin-top: -0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: small;
+  margin-top: -0.5rem;
 }
 
 .contact-link {
-    width: 62px;
+  width: 62px;
 }
 
 .contact-list ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .contact-list li {
-    float: left;
-    margin: 5px 20px 0px 20px;
+  float: left;
+  margin: 5px 20px 0px 20px;
 }
 
 .container-overflow {
-    max-height: 790px;
-    overflow: scroll;
+  max-height: 790px;
+  overflow: scroll;
 }
 
 .image-height {
-    max-height: 300px;
-    overflow: hidden;
+  max-height: 300px;
+  overflow: hidden;
 }
