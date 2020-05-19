@@ -106,3 +106,67 @@ A form to register a new user account, with fields for Name, Email, Password, Ad
 ## Entity Relationship Diagram
 
 ![erd](./docs/Lady_Fern_ERD.png)
+
+### Abstractions
+
+The general structure of this marketplace application is fairly straight forward. You have users buying/selling listings, the ability to favourite listings, add listings to a cart, as well having a history of purchases.
+
+High level components required for this application include models for:
+- Users: holding customer information.
+- Listings: holding item information.
+- Carts: holding listings for a users cart.
+- Favourites: marking listings as a users favourite.
+- Listings_Purchases: holding listings for each.
+- Purchases: holding purchase history for a user.
+
+Third Party services are also required such as:
+- Devise: User account creation and authentication.
+- Stripe: Transaction processing and encryption.
+- TailwindCSS: highly customizable, low-level CSS framework for website styling.
+- Flickity: An all in one responsive carousel package.
+
+### Third Party Services
+
+- Heroku
+
+This rails application has been deployed via GitHub and Heroku. Heroku is a Cloud PaaS (Platform as a Service) solution for the hosting of web applications. Along with its heavy integration with GitHub, this makes for fast and simple deployment.
+
+- Amazon S3
+
+Due to my application have a plethora of images attached (user profile pictures, listing images, etc), I required a storage solution so I didnt have to hold all the image data locally. Amazon S3 has a great free tier, and offers fairly seamless rails integration, so this was an easy choice to store my images.
+
+- Stripe API
+
+Handling payment information comes with its own set of challenges, security being the top priority. As I am still a budding developer, I don't feel confident handling the safe processing of transaction details myself. Enter Stripe API, an all in one RESTful third-party payment solution. This made taking peoples money a breeze! As a bonus, it handles all the appropriate encryption on its own!
+
+- Devise
+
+As previously mentioned, Devise is a handy Ruby Gem that handles User accounts and authentication! Using this service, I can assign roles and permissions, as well as create update and destroy user accounts. If I add a few of my own fields to the model, I should be able to make great use of this gem.
+
+### Active Record Model Relationships
+
+All of these relationships are visualized in my Entitity Relationship Diagram.
+
+- **Users**: Users will be used to hold all the information for a customer of the website and any admin roles for staff. Users will have many Listings, Carts, Favourites and Purchases. Users will have a picture attached.
+
+- **Listing**: Listing will hold all the information for each item to be sold. Listing belongs to User and has many Carts, Favourites and Purchases. Listings have a picture attached and validate for a Title, Description and Price. Listings will be destroyed if the User parent is destroyed.
+
+- **Cart**: A cart component is required to hold each listing in a users cart in any given session. Carts belong to Users and Listings. Cart objects will be destroyed if their parent User is deleted.
+
+- **Favourites**: The Favourite object is used to hold each listing that a User selects as a favourite. Favourites belong to Users and Listings. A favourite row will stay persistent until the User removes it, or the User account is destroyed.
+
+- **Purchases**: This object is used to store listing information for each successful transaction. This allows the application to have a record of each users past transactions. Purchases belong to Users, and have many listings through listings_purchases. Purchase objects are destroyed if their parent User is destroyed.
+
+- **Listings_Purchases**: This is a join table for use with the Purchases object. It allows for the storage of multiple listing objects in a single Purchase object. It belongs to Listing and Purchases, and is destroyed along with its parents.
+
+- **Active Record Blob**: This is used to attach pictures to Listings and Users. Users have one Picture attached, Listings have one Picture attached.
+
+### Project Planning and Tracking
+
+In order to track the development of my application, I made use of a Trello Kanban board. This allowed me to create cards for each task and order them in columns for easy progress management.
+
+![Trello 1](./docs/resources/trello1.png)
+![Trello 2](./docs/resources/trello2.png)
+![Trello 3](./docs/resources/trello2.5.png)
+![Trello 4](./docs/resources/trello3.png)
+
