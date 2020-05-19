@@ -44,6 +44,7 @@ The target audience for this application is limited to residents of the local Ne
 
 - HTML5
 - CSS3
+- TailwindCSS
 - SCSS
 - JS
 - JQuery
@@ -142,6 +143,10 @@ Handling payment information comes with its own set of challenges, security bein
 - Devise
 
 As previously mentioned, Devise is a handy Ruby Gem that handles User accounts and authentication! Using this service, I can assign roles and permissions, as well as create update and destroy user accounts. If I add a few of my own fields to the model, I should be able to make great use of this gem.
+
+- TailwindCSS
+
+Tailwind is a highly customizable low-level CSS framework that allows more freedom than a traditional framework like Bootstrap. It also makes it quite simple to create nicely responsive website components from scratch.
 
 ### Active Record Model Relationships
 
