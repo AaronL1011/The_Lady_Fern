@@ -1,10 +1,11 @@
 class Listing < ApplicationRecord
   validates :title, presence: true
+  validates :description, presence: true
   validates :price, presence: true
 
   belongs_to :user
 
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
   has_many :users, through: :favourites
   has_many :listings_purchases
   has_many :carts, dependent: :destroy

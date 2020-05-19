@@ -5,13 +5,16 @@ class ListingsController < ApplicationController
 
   def index
     @listings = Listing.all.sort_by(&:created_at).reverse
+    if signed_in?
+      @favourited = current_user.favourites.distinct.pluck(:listing_id).include?(12)
+    end
   end
 
   def show
     @listing = Listing.find(params[:id])
     @randomItems = get_random_listings
 
-    if signed_in?
+    if signed_in? && @listing.user != current_user
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         customer_email: current_user.email,
@@ -42,6 +45,7 @@ class ListingsController < ApplicationController
     else
       @listings = current_user.listings.all
     end
+    @favourites = current_user.favourites.all
   end
 
   def new

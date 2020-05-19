@@ -7,7 +7,7 @@
     <%= render "item_show" %>
   <% end %>
 </div>
-<% if signed_in? %>
+<% if signed_in? & @listing.user != current_user %>
   <script src="https://js.stripe.com/v3/"></script>
   <script>
   document

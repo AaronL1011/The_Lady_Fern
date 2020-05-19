@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   post "/listings", to: "listings#create"
   get "/listings/new", to: "listings#new", as: "new_listing"
 
-    # deleting listings
-    delete "/listings/:id", to: "listings#destroy"
+  # deleting listings
+  delete "/listings/:id", to: "listings#destroy"
     
   # retrieving single listings
   get "/listings/:id", to: "listings#show", as: "listing"
@@ -35,5 +35,8 @@ Rails.application.routes.draw do
   put "/listings/:id", to: "listings#update"
   patch "/listings/:id", to: "listings#update"
 
+  # favourites routes
+
+  post "/favourites", to: "favourites#toggle_favourite", as: "toggle_favourite"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
