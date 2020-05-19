@@ -18,6 +18,14 @@ https://github.com/AaronL1011/The_Lady_Fern
 
 ### Functionality and Features
 
+This website is being designed as an e-commerce application for a local business, so obviously it needs to be able to handle the creation, retrieval, updating and deletion of listings as well as functionality for transactions and order processing. This means I will need to write CRUD methods for listings, and implement a third-party payment solution such as Stripe.
+
+I plan to include user accounts in order to control role permissions and authentication, and attach each transaction to the corresponding user. I will achieve this with the Devise gem, as it has inbuilt CRUD functions and authentication methods.
+
+Some extra features I would like to implement:
+- Search Bar
+- Admin Dashboard for controlling all listings/users
+- Shopping Cart for multiple listings in one purchase
 
 
 ### Site Map
@@ -26,8 +34,7 @@ https://github.com/AaronL1011/The_Lady_Fern
 
 ### Screenshots
 
-**Home Page**
-![home page screenshot](./docs/resources/screenshot1.png)
+![home page screenshot](./docs/resources/screenshots.png)
 
 **Item View**
 ![item view screenshot](./docs/resources/screenshot2.png)
@@ -76,21 +83,33 @@ The target audience for this application is limited to residents of the local Ne
 ### Wireframes
 
 **Landing Page**
+This page should include the most useful information. I plan to include a cross-page header/navigation bar. A short blurb about the company, a showcase-carousel for displaying listing categories, and all the current available listings.
+
 ![Landing Page](./docs/lady_fern_wireframes/Index_View.png)
 
 **Item Show View**
+This view is where all information on a listing is available, as well as buttons for Buy Now and adding the item to the users cart. Below the listing, I want to include some suggested items to encourage more purchases from the user.
+
 ![Item Show View](./docs/lady_fern_wireframes/Item_View.png)
 
 **Cart View**
+Pretty straight forward, this is the shopping cart view where the user can adjust item quantities and checkout. Ill have to figure out a way to make it look nice on mobile with the amount of information I'm displaying. I think I will include the same suggested items idea below the cart aswell as the item listings.
+
 ![Cart View](./docs/lady_fern_wireframes/Cart_View.png)
 
 **Sign In View**
+This is where users can sign in, or reset passwords/create accounts.
+
 ![Sign In View](./docs/lady_fern_wireframes/Sign_In_View.png)
 
 **Account View**
+This is where the user will see their account information, as well as ways to edit their information. I don't think I will be able to include all of this information within the assignement timeframe, so I may have to keep it barebones if I want to include the other features planned.
+
 ![Account View](./docs/lady_fern_wireframes/Account_View.png)
 
 **Create Account View**
+A form to register a new user account, with fields for Name, Email, Password, Addresses and a profile picture upload.
+
 ![Create Account View](./docs/lady_fern_wireframes/Account_Create_View.png)
 
 ## Entity Relationship Diagram
