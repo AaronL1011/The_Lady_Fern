@@ -1,42 +1,42 @@
 Rails.application.routes.draw do
+  # User account routes.
   devise_for :users
   get "/pages/profile", to: "pages#profile", as: "profile"
   root 'listings#index'
 
-  # admin listings view
+  # Dashboard listings view.
   get "/listings/all", to: "listings#all", as: "admin_listing"
 
-  # miscellanious routes
+  # Miscellanious routes.
   get "/pages/contact", to: "pages#contact", as: "contact"
   get "/pages/search", to: "pages#search", as: "search"
 
-  # cart routes
+  # Cart routes.
   get "/cart", to: "carts#show", as: "cart"
   post "/cart", to: "carts#add", as: "add_to_cart"
   delete "/cart/:id", to: "carts#remove", as: "remove_from_cart"
   put "/cart/:id", to: "carts#update", as: "update_cart"
   get "/cart/checkout", to: "carts#checkout", as: "checkout"
 
-  # creating new listings
+  # Creating new listings.
   post "/listings", to: "listings#create"
   get "/listings/new", to: "listings#new", as: "new_listing"
 
-  # deleting listings
+  # Deleting listings.
   delete "/listings/:id", to: "listings#destroy"
     
-  # retrieving single listings
+  # Retrieving single listings.
   get "/listings/:id", to: "listings#show", as: "listing"
   
-  # stripe payment routes
+  # Stripe payment routes.
   get "/payments/success", to: "payments#success"
 
-  # editing listings
+  # Editing listings routes.
   get "/listings/:id/edit", to: "listings#edit", as: "edit_listing"
   put "/listings/:id", to: "listings#update"
   patch "/listings/:id", to: "listings#update"
 
-  # favourites routes
-
+  # Favourites routes.
   post "/favourites", to: "favourites#toggle_favourite", as: "toggle_favourite"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

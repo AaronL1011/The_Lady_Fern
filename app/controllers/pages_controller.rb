@@ -2,12 +2,14 @@ class PagesController < ApplicationController
   def contact
   end
 
+  # Getting search query parameters and returning listings as such.
   def search
     search_query = params[:search].downcase
     @listings = get_search_listings(search_query)
     @randomItems = get_random_listings
   end
 
+  # Fetching info for profile view.
   def profile
     @user = current_user
     @favourites = current_user.favourites.all
@@ -15,6 +17,7 @@ class PagesController < ApplicationController
 
   private
 
+  # Check item title and size for specified search query, return array of matches.
   def get_search_listings(query)
     query_listings = []
     all_listings = Listing.all
@@ -46,5 +49,6 @@ class PagesController < ApplicationController
       return nil
     end
   end
+
 end
 

@@ -1,12 +1,14 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
   before_action :get_user_and_cart, only: [:show, :checkout, :add]
-  
-  def show 
+
+  # return items for view
+  def show
     get_total_price
     @randomItems = get_random_listings
   end
-  
+
+  # logic for Stripe API checkout
   def checkout
     get_stripe_line_items
     if @cart.count > 0
@@ -23,7 +25,7 @@ class CartsController < ApplicationController
         success_url: "#{root_url}payments/success?userId=#{current_user.id}&listingId=#{current_user.carts.first.id}",
         cancel_url: "#{cart_url}"
       )
-  
+
       @session_id = session.id
     end
   end
@@ -41,6 +43,7 @@ class CartsController < ApplicationController
     redirect_to @listing
   end
 
+  # Logic for removing item from cart
   def remove
     Cart.find(params[:id]).destroy
     redirect_to cart_path
@@ -52,18 +55,17 @@ class CartsController < ApplicationController
     cart_listing = Cart.find(params[:id])
   end
 
-  def destroy
-
-  end
 
   private
 
+  # Get array for Stripe invoice
   def get_stripe_line_items
     @cart_array = []
     for item in @cart
       @cart_array.push({name: "#{item.listing.size} #{item.listing.title}", description: item.listing.description, amount: item.listing.price.to_i * 100, currency: 'aud', quantity: item.qty })
     end
   end
+
 
   def get_user_and_cart
     @user = current_user
@@ -73,14 +75,14 @@ class CartsController < ApplicationController
   def get_listing
     @listing = Listing.find(params[:id])
   end
-  
+
   def get_total_price
     @total_price = 0
     for item in @cart
       @total_price += item.listing.price * item.qty
     end
   end
-  
+
   # 3 random listings for recommending to users
   def get_random_listings
     listingsArray = []
@@ -99,4 +101,5 @@ class CartsController < ApplicationController
       return nil
     end
   end
+
 end

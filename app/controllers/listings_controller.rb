@@ -2,14 +2,12 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :destroy, :update, :all, :create]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-
+  # Return a listing array sorted by newest.
   def index
     @listings = Listing.all.sort_by(&:created_at).reverse
-    if signed_in?
-      @favourited = current_user.favourites.distinct.pluck(:listing_id).include?(12)
-    end
   end
 
+  # Returning required objects and Stripe API logic for "Buy Now" purchases.
   def show
     @listing = Listing.find(params[:id])
     @randomItems = get_random_listings
@@ -38,6 +36,7 @@ class ListingsController < ApplicationController
     end
   end
 
+  # Logic for returning appropriate dashboard information to users and/or admin.
   def all
     if current_user.admin
       @listings = Listing.all.sort_by(&:created_at).reverse
@@ -48,26 +47,29 @@ class ListingsController < ApplicationController
     @favourites = current_user.favourites.all
   end
 
+  # Defining a new listing.
   def new
     @listing = Listing.new
   end
 
+  # Creating a new listing.
   def create
     @listing = current_user.listings.create(listing_params)
     if @listing.errors.any?
       render "new"
-    else 
+    else
       redirect_to root_path
     end
   end
 
+  # Returning the edit.html.erb
   def edit
-
   end
 
   def search
   end
-  
+
+  # Updating a listing if there are no errors.
   def update
     @listing = Listing.update(params["id"], listing_params)
     if @listing.errors.any?
@@ -82,6 +84,7 @@ class ListingsController < ApplicationController
     end
   end
 
+  # Can you guess?
   def destroy
     Listing.find(params[:id]).destroy
     redirect_to root_path

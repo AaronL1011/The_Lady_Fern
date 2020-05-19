@@ -13,15 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ // Import Fonts.
  @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
- 
+
+
+ // Hide Scrollbar.
 ::-webkit-scrollbar {
   display: none;
 }
 
-html {
-  min-height: 100vh;
-}
+// Layout Styling.
 
 body {
   background: #FFFFF7;
@@ -44,10 +46,13 @@ body {
   transition: 0.3s ease;
 }
 
+
+// Carousel Styling
+
 .carousel {
   background: #FFF;
 }
-  
+
 .carousel-cell {
   width: 90%;
   height: 320px;
@@ -66,7 +71,7 @@ body {
   counter-increment: carousel-cell;
 }
 
-/* no circle */
+/* no circle on carousel button */
 .flickity-button {
   background: transparent;
 }
@@ -87,7 +92,7 @@ body {
 .flex-center {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .carousel-cell-label {
@@ -102,7 +107,6 @@ body {
   box-shadow: 0px 0px 0px 2px white;
 }
 
-// hard-coded styles for carousel backgrounds
 .bg1 {
   background: url(asset_path("large.png"));
   background-position: center;
@@ -127,11 +131,15 @@ body {
   background-size: cover;
 }
 
+// Form Styling.
+
 .sign-in-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+// Header Styling.
 
 .dropdown:hover .dropdown-menu {
   display: block;
@@ -146,6 +154,8 @@ body {
   font-size: small;
   margin-top: -0.5rem;
 }
+
+// Contact Page Styles.
 
 .contact-link {
   width: 62px;
@@ -165,9 +175,4 @@ body {
 .container-overflow {
   max-height: 790px;
   overflow: scroll;
-}
-
-.image-height {
-  max-height: 300px;
-  overflow: hidden;
 }
