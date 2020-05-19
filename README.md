@@ -36,15 +36,6 @@ Some extra features I would like to implement:
 
 ![home page screenshot](./docs/resources/screenshots.png)
 
-**Item View**
-![item view screenshot](./docs/resources/screenshot2.png)
-
-**All Listings**
-![all listings screenshot](./docs/resources/screenshot3.png)
-
-**Search Listings**
-![search listings screenshot](./docs/resources/screenshot4.png)
-
 ### Target Audience
 
 The target audience for this application is limited to residents of the local Newcastle, NSW area due to the project being developed for a local business that only provides local flower delivery. As a developer I must ensure the website is appropriate for all ages and meets the requirements for any customers who want to purchase listings from the website. 
