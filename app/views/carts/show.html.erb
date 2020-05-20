@@ -2,14 +2,14 @@
   <h1 class="text-center py-10 text-3xl text-orange-900">Your Cart</h1>
 
     <div class="flex w-full justify-center pb-10 px-4">
-      <table class="table-auto text-center">
-        <thead>
+      <table class="w-full lg:w-1/2 lg:table-auto text-center">
+        <thead class="w-full">
           <tr>
             <th class="px-10 py-2 hidden lg:block">&nbsp;</th>
             <th class="lg:pr-32 py-2">Item</th>
             <th class="lg:px-10 py-2">Qty</th>
             <th class="lg:px-10 py-2">Price</th>
-            <th class="lg:px-10 py-2">Total</th>
+            <th class="lg:px-10 py-2 hidden lg:table-cell">Total</th>
             <th class="lg:px-10 py-2">&nbsp;</th>
           </tr>
         </thead>
@@ -34,7 +34,7 @@
                   <% end %>
                 </td>
                 <td class="px-4 py-2">$<%= item.listing.price %>0</td>
-                <td class="px-4 py-2">$<%= item.listing.price * item.qty %>0</td>
+                <td class="px-4 py-2 hidden lg:table-cell">$<%= item.listing.price * item.qty %>0</td>
                 <td class="lg:px-4 py-2 w-1">
                   <%= form_tag( remove_from_cart_path( item.id ), method: "delete", class:"inline" ) do %>
                     <div class="comment-controls inline">
@@ -45,7 +45,7 @@
               </tr>
           <% end %>
           <tr>
-            <td colspan="3"></td>
+            <td colspan="2"></td>
             <td class="px-4 pt-12 pb-4"><strong>Subtotal:</strong></td>
             <td class=" pt-12 pb-4">$<%= @total_price %>0</td>
           </tr>
@@ -56,7 +56,7 @@
     <%= form_tag( root_path ) do %>
       <%= submit_tag "Update", class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
     <% end %>
-    <%= link_to  "Checkout", checkout_path, class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    <%= link_to  "Checkout", checkout_path, class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-6 border border-gray-400 rounded shadow" %>
   </div>
 <% else %>
 
