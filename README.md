@@ -1,29 +1,35 @@
 # The Lady Fern - Florist Marketplace
 
 > R7 - Identification of the problem you are trying to solve by building this particular marketplace app.
+
 This e-commerce web application is being developed for a local florist in order to boost their sales during the COVID-19 isolation period and beyond. With the strict social distancing rules set in place, this business owner is finding it difficult to continue regular operations as local markets and gatherings are no longer allowed to take place.
 
 > R8 - Why is it a problem that needs solving?
+
 Global economy has been affected by this pandemic, and small business are finding it challenging to stay afloat. With the implementation of an online platform for selling goods, this allows businesses to continue to sustain themselves, whilst also driving the economy and potentially pulling the country further towards an economic upturn.
 
 ## Relevant Links
 
 ### Website
 > R9 - A link (URL) to your deployed app (i.e. website)
+
 http://lady-fern.herokuapp.com/
 
 ### Github Repository
 > R10 - A link (URL) to your GitHub repository (repo).
+
 https://github.com/AaronL1011/The_Lady_Fern
 
 ## Planning and Development
 
 ### Purpose
 > R11 - Purpose
+
 This Rails web application is being developed for a local florist in order to boost their sales during the COVID-19 isolation period and beyond. With the strict social distancing rules set in place, this business owner is finding it difficult to continue regular operations as local markets and gatherings are no longer allowed to take place.
 
 ### Functionality and Features
 > R11 - Functionality / Features
+
 This website is being designed as an e-commerce application for a local business, so obviously it needs to be able to handle the creation, retrieval, updating and deletion of listings as well as functionality for transactions and order processing. This means I will need to write CRUD methods for listings, and implement a third-party payment solution such as Stripe.
 
 I plan to include user accounts in order to control role permissions and authentication, and attach each transaction to the corresponding user. I will achieve this with the Devise gem, as it has inbuilt CRUD functions and authentication methods.
@@ -36,18 +42,22 @@ Some extra features I would like to implement:
 
 ### Site Map
 > R11 - Sitemap
+
 ![sitemap](./docs/lady_fern_sitemap.png)
 
 ### Screenshots
 > R11 - Screenshots
+
 ![home page screenshot](./docs/resources/screenshots.png)
 
 ### Target Audience
 > R11 - Target audience
+
 The target audience for this application is limited to residents of the local Newcastle, NSW area due to the project being developed for a local business that only provides local flower delivery. As a developer I must ensure the website is appropriate for all ages and meets the requirements for any customers who want to purchase listings from the website. 
 
 ### Tech Stack
 > R11 - Tech stack (e.g. html, css, deployment platform, etc)
+
 - HTML5
 - CSS3
 - TailwindCSS
@@ -60,6 +70,7 @@ The target audience for this application is limited to residents of the local Ne
 
 ### User Stories
 > R12	- User stories for your app
+
 **As a seller**, I would like to be able to create listings and accept payment on this marketplace so I can recieve money in exchange for my goods.
 
 **As a buyer**, I would like to be able to see all available listings on the marketplace so I can purchase the listings that I like.
@@ -84,6 +95,7 @@ The target audience for this application is limited to residents of the local Ne
 
 ### Wireframes
 > R13	- Wireframes for your app
+
 **Landing Page**
 This page should include the most useful information. I plan to include a cross-page header/navigation bar. A short blurb about the company, a showcase-carousel for displaying listing categories, and all the current available listings.
 
@@ -117,12 +129,14 @@ A form to register a new user account, with fields for Name, Email, Password, Ad
 ## Entity Relationship Diagram
 > R14	- An ERD for your app
 > R19	- Provide your database schema design
+
 I achieved an MVP within the time limits of the assignment, however I was not able to implement the functionality for the Purchase History tables. The final format for the applications ERD will be as below.
 
 ![ERD](./docs/Lady_Fern_ERD.png)
 
 ### Abstractions
 > R15	- Explain the different high-level components (abstractions) in your app
+
 The general structure of this marketplace application is fairly straight forward. You have users buying/selling listings, the ability to favourite listings, add listings to a cart, as well having a history of purchases.
 
 High level components required for this application include models for:
@@ -141,6 +155,7 @@ Third Party services are also required such as:
 
 ### Third Party Services
 > R16	- Detail any third party services that your app will use
+
 - Heroku
 
 This rails application has been deployed via GitHub and Heroku. Heroku is a Cloud PaaS (Platform as a Service) solution for the hosting of web applications. Along with its heavy integration with GitHub, this makes for fast and simple deployment.
@@ -163,6 +178,7 @@ Tailwind is a highly customizable low-level CSS framework that allows more freed
 
 ### Active Record Model Relationships
 > R17	- Describe your projects models in terms of the relationships (active record associations) they have with each other
+
 All of these relationships are visualized in my Entitity Relationship Diagram.
 
 - **Users**: Users will be used to hold all the information for a customer of the website and any admin roles for staff. Users will have many Listings, Carts, Favourites and Purchases. Users will have a picture attached.
@@ -181,6 +197,7 @@ All of these relationships are visualized in my Entitity Relationship Diagram.
 
 ### Project Planning and Tracking
 > R20	- Describe the way tasks are allocated and tracked in your project
+
 In order to track the development of my application, I made use of a Trello Kanban board and Agile Methodology. This allowed me to create cards for each task and order them in columns for easy progress management.
 
 ## Trello Kanban Board
