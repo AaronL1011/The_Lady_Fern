@@ -25,7 +25,7 @@ https://github.com/AaronL1011/The_Lady_Fern
 ### Purpose
 > R11 - Purpose
 
-This Rails web application is being developed for a local florist in order to boost their sales during the COVID-19 isolation period and beyond. With the strict social distancing rules set in place, this business owner is finding it difficult to continue regular operations as local markets and gatherings are no longer allowed to take place.
+COVID-19 has made it increasingly difficult for small businesses to survive. Having an online presence and the ability to handle e-commerce is a very effective way to keep your operations running as usual. This e-commerce marketplace is being created for local florists to buy and sell their items with the added safety of effective social distancing.
 
 ### Functionality and Features
 > R11 - Functionality / Features
@@ -63,7 +63,6 @@ The target audience for this application is limited to residents of the local Ne
 - TailwindCSS
 - SCSS
 - JS
-- JQuery
 - Ruby on Rails
 - Puma
 - Heroku
@@ -139,6 +138,8 @@ I achieved an MVP within the time limits of the assignment, however I was not ab
 
 The general structure of this marketplace application is fairly straight forward. You have users buying/selling listings, the ability to favourite listings, add listings to a cart, as well having a history of purchases.
 
+The app follows the MVC pattern; deconstructing functions into models, views and controllers.
+
 High level components required for this application include models for:
 - Users: holding customer information.
 - Listings: holding item information.
@@ -146,6 +147,11 @@ High level components required for this application include models for:
 - Favourites: marking listings as a users favourite.
 - Listings_Purchases: holding listings for each.
 - Purchases: holding purchase history for a user.
+
+Controllers to handle functions such as:
+- Adding and removing Listings.
+- Adding listings to carts.
+- Purchasing listings.
 
 Third Party services are also required such as:
 - Devise: User account creation and authentication.
@@ -176,6 +182,10 @@ As previously mentioned, Devise is a handy Ruby Gem that handles User accounts a
 
 Tailwind is a highly customizable low-level CSS framework that allows more freedom than a traditional framework like Bootstrap. It also makes it quite simple to create nicely responsive website components from scratch.
 
+- Flickity
+
+Flickity is an all-in-one, touch responsive carousel package developed in JS and CSS. In concept, this is a really great feature, however Flickity doesn't play nicely with Turbolinks included with rails. It works for the assignment, but for production I will find another carousel solution.
+
 ### Active Record Model Relationships
 > R17	- Describe your projects models in terms of the relationships (active record associations) they have with each other
 
@@ -195,15 +205,28 @@ All of these relationships are visualized in my Entitity Relationship Diagram.
 
 - **Active Record Blob**: This is used to attach pictures to Listings and Users. Users have one Picture attached, Listings have one Picture attached.
 
-### Project Planning and Tracking
+### Database Relations
+> R18 - Discuss the database relations to be implemented in your application
+
+Database relations are extremely important in order for the web application to function as intended, as Rails convention relies heavily on all Objects being linked in certain specific ways.
+
+This is mostly covered above, but the general idea is Users will have many listings (each Listing row with their user_id reference), have many favourites (each row in the Favourites table containing their user_id reference), have many carts (each row in the Carts table containing their user_id), aswell as a boolean Admin value for assigning permissions.
+
+Listings belong to the User that creates it, and are required to have a title, a description and a price. A listing can have many favourites and carts (every corresponding row in the Favourite and Carts tables that reference its listing_id). Listings can also have many Users THROUGH the Favourites model. This is because many users can mark the same item as a favourite on their account.
+
+Both Carts and Favourites belong to the User and the Listing each row references.
+
+## Project Planning and Tracking
 > R20	- Describe the way tasks are allocated and tracked in your project
 
-In order to track the development of my application, I made use of a Trello Kanban board and Agile Methodology. This allowed me to create cards for each task and order them in columns for easy progress management.
+In order to track the development of my application, I made use of a Trello Kanban board. This allowed me to create cards for each task and order them in columns for easy progress management. I also made use of Agile Development Methodology for the structure of my development process. Because this application is also a commision for a real client, I wanted to encourange communication and feedback throughout the development of the application. Using Agile project management, I was able to be consistently receptive to changes put forward by the client, and made sure to order the tasks on my Kanban board to have a functioning MVP to deliver to the client as soon as possible.
 
-## Trello Kanban Board
+### Trello Kanban Board
 ![Trello 1](./docs/resources/trello1.png)
 ![Trello 2](./docs/resources/trello2.png)
 ![Trello 3](./docs/resources/trello2.5.png)
 ![Trello 4](./docs/resources/trello3.png)
 
-## Gantt Chart
+### Gantt Chart
+
+![Gantt Chart](./docs/Gantt_Chart.png)
