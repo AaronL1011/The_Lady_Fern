@@ -231,4 +231,6 @@ In order to track the development of my application, I made use of a Trello Kanb
 
 ### Gantt Chart
 
+I also made use of a simple Gantt chart to track how I am progressing with the application development in a more accurate form. 
+
 ![Gantt Chart](./docs/Gantt_Chart.png)
