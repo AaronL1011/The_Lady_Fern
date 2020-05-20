@@ -153,6 +153,8 @@ Controllers to handle functions such as:
 - Adding listings to carts.
 - Purchasing listings.
 
+Views will be required for each page a user will see, eg. Landing Page, Item Views, Cart Views, Account Views etc.
+
 Third Party services are also required such as:
 - Devise: User account creation and authentication.
 - Stripe: Transaction processing and encryption.
