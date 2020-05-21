@@ -11,7 +11,10 @@ class ListingsController < ApplicationController
   def show
     @listing = Listing.find(params[:id])
     @randomItems = get_random_listings
+  end
 
+  def buy_now
+    set_listing
     if signed_in? && @listing.user != current_user
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
@@ -33,6 +36,9 @@ class ListingsController < ApplicationController
         cancel_url: "#{root_url}listings/#{@listing.id}"
       )
       @session_id = session.id
+    else
+      redirect_back(fallback_location: root_path)
+      flash.alert = "You cannot purchase your own listings!"
     end
   end
 

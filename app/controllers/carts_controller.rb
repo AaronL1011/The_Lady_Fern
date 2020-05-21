@@ -32,15 +32,19 @@ class CartsController < ApplicationController
 
   # Check if current users cart includes specified listing to add, if so, increase quantity by 1, otherwise add new listing to cart.
   def add
-    get_listing
-    if @user.carts.distinct.pluck(:listing_id).include?(@listing.id)
-      cart_listing = @user.carts.find_by_listing_id(@listing.id)
-      listing_qty = cart_listing.qty + 1
-      cart_listing.update(qty: listing_qty)
+    set_listing
+    if @listing.user != current_user
+      if @user.carts.distinct.pluck(:listing_id).include?(@listing.id)
+        cart_listing = @user.carts.find_by_listing_id(@listing.id)
+        listing_qty = cart_listing.qty + 1
+        cart_listing.update(qty: listing_qty)
+      else
+        @user.carts.create("listing_id" => @listing.id, "qty" => 1)
+      end
     else
-      @user.carts.create("listing_id" => @listing.id, "qty" => 1)
+      redirect_back(fallback_location: root_path)
+      flash.alert = "You cannot purchase your own listings!"
     end
-    redirect_to @listing
   end
 
   # Logic for removing item from cart
@@ -72,7 +76,7 @@ class CartsController < ApplicationController
     @cart = Cart.where("user_id": @user.id)
   end
 
-  def get_listing
+  def set_listing
     @listing = Listing.find(params[:id])
   end
 

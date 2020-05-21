@@ -36,7 +36,7 @@
     </div><br><br>
     <p><%= number_to_currency(@listing.price)%></p>
     <div class="inline"><br>
-      <button data-stripe="payment" class="bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">Buy Now</button>
+      <%= link_to  "Buy Now", buy_now_path(:id => @listing.id), method: :post, class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-6 border border-gray-400 rounded shadow" %>
       <%= form_tag( add_to_cart_path(:id => @listing.id), class:"inline" ) do %>
         <%= submit_tag "Add To Cart", class: "bg-white mr-5 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
       <% end %>

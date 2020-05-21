@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     
   # Retrieving single listings.
   get "/listings/:id", to: "listings#show", as: "listing"
+
+  # Buy Now listings route.
+
+  post "/listings/buy_now", to: "listings#buy_now", as: "buy_now"
   
   # Stripe payment routes.
   get "/payments/success", to: "payments#success"
