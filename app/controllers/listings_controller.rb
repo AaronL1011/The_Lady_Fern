@@ -36,6 +36,9 @@ class ListingsController < ApplicationController
         cancel_url: "#{root_url}listings/#{@listing.id}"
       )
       @session_id = session.id
+    elsif !signed_in?
+      redirect_back(fallback_location: root_path)
+      flash.alert = "You need to sign in!"
     else
       redirect_back(fallback_location: root_path)
       flash.alert = "You cannot purchase your own listings!"
