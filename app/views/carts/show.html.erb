@@ -57,7 +57,7 @@
     <%= form_tag( root_path ) do %>
       <%= submit_tag "Update", class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
     <% end %>
-    <%= link_to  "Checkout", checkout_path, class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-6 border border-gray-400 rounded shadow" %>
+    <%= link_to  "Checkout", checkout_path, class: "bg-white mr-2 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-6 border border-gray-400 rounded shadow", data: { turbolinks: false } %>
   </div>
 <% else %>
 

@@ -11,6 +11,7 @@ class CartsController < ApplicationController
   # logic for Stripe API checkout
   def checkout
     get_stripe_line_items
+    sleep(1)
     if @cart.count > 0
       session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
@@ -27,6 +28,8 @@ class CartsController < ApplicationController
       )
 
       @session_id = session.id
+    else
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -38,8 +41,10 @@ class CartsController < ApplicationController
         cart_listing = @user.carts.find_by_listing_id(@listing.id)
         listing_qty = cart_listing.qty + 1
         cart_listing.update(qty: listing_qty)
+        redirect_back(fallback_location: root_path)
       else
         @user.carts.create("listing_id" => @listing.id, "qty" => 1)
+        redirect_back(fallback_location: root_path)
       end
     else
       redirect_back(fallback_location: root_path)
